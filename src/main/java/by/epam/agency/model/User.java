@@ -1,9 +1,12 @@
 package by.epam.agency.model;
 
+import java.util.Set;
+
 public class User extends Entity {
 
 	private String login;
 	private String password;
+	private Set<Tour> tours;
 	
 	public User() {}
 	
@@ -22,6 +25,14 @@ public class User extends Entity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public Set<Tour> getTours() {
+		return tours;
+	}
+	
+	public void setTours(Set<Tour> tours) {
+		this.tours = tours;
+	} 
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -44,15 +55,26 @@ public class User extends Entity {
 		} else if (!password.equals(user.password)) {
 			return false;
 		}
+		if (tours == null) {
+			if (user.tours != null) {
+				return false;
+			}
+		} else if (!tours.equals(user.tours)) {
+			return false;
+		}
 		return true;
 	}
 	
 	@Override
 	public int hashCode() {
 		int hashCode = 0;
-		hashCode += getId() * 31;
-		hashCode += login == null ? 0 : login.hashCode();
-		hashCode += password == null ? 0 : password.hashCode();
+		int prime = 31;
+		hashCode += getId() * prime;
+		hashCode += login == null ? 0 : login.hashCode() * prime;
+		hashCode += password == null ? 0 : password.hashCode() * prime;
+		for (Tour tour : tours) {
+			hashCode += tour == null ? 0 : tour.hashCode() * prime;
+		}
 		return hashCode;
 	}
 	
@@ -61,7 +83,8 @@ public class User extends Entity {
 		return getClass().getSimpleName() +
 				" [id=" + getId() +
 				", login=" + login +
-				", password=" + password + "]";
+				", password=" + password +
+				", tours=" + tours + "]";
 	}
 	
 }

@@ -72,9 +72,10 @@ public class Review extends Entity {
 	@Override
 	public int hashCode() {
 		int hashCode = 0;
-		hashCode += (getId() + userId + tourId) * 31;  
-		hashCode += date == null ? 0 : date.hashCode();
-		hashCode += text == null ? 0 : text.hashCode();
+		int prime = 31;
+		hashCode += (getId() + userId + tourId) * prime;  
+		hashCode += date == null ? 0 : date.hashCode() * prime;
+		hashCode += text == null ? 0 : text.hashCode() * prime;
 		return hashCode;
 	}
 	

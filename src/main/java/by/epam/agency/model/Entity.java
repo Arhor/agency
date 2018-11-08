@@ -1,6 +1,6 @@
 package by.epam.agency.model;
 
-public abstract class Entity {
+public abstract class Entity implements Comparable<Entity> {
     
 	private int id;
 	
@@ -18,4 +18,8 @@ public abstract class Entity {
     	this.id = id;
     }
 	
+    public int compareTo(Entity entity) {
+    	return entity.id - id;
+    }
+    
 }
