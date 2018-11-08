@@ -114,7 +114,7 @@ public class Hotel extends Entity {
 	@Override
 	public String toString() {
 		return getClass().getSimpleName() + 
-				" [id" + getId() +
+				" [id=" + getId() +
 				", name=" + name +
 				", stars=" + stars +
 				", website=" + website +
